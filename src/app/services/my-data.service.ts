@@ -10,8 +10,9 @@ import { ResponseI } from '../models/response.interface';
 })
 export class MyDataService {
 
-  url:string = 'https://api.themoviedb.org/'
-  apiKey:string = 'api_key=554b1523bc221c8844d88617298a94b7'
+  url:string = 'https://api.themoviedb.org/3/';
+  apiKey:string = '?api_key=554b1523bc221c8844d88617298a94b7';
+  lenguage: string = '&language=es-ES';
 
   constructor(private http: HttpClient) { }
 
@@ -22,13 +23,25 @@ export class MyDataService {
 
   getPopularMovies(page: number):Observable<apiResponseI>{
     return this.http.get<apiResponseI>(
-      this.url + '3/movie/popular?'+ this.apiKey + '&language=es-ES&page='+page
+      this.url + 'movie/popular'+ this.apiKey + this.lenguage + '&page=' + page
     )
   }
 
   getLatestMovies(){
     return this.http.get(
-      this.url + '3/movie/latest?' + this.apiKey + '&language=es-ES'
+      this.url + 'movie/latest' + this.apiKey + this.lenguage
+    )
+  }
+
+  getMovieById(movieId: string):Observable<MovieI>{
+    return this.http.get<MovieI>(
+      this.url + 'movie/' + movieId + this.apiKey + this.lenguage
+    )
+  }
+
+  getImageFromMovieId(movieId: string){
+    return this.http.get(
+      this.url + 'movie/' + movieId + '/images' + this.lenguage
     )
   }
 }

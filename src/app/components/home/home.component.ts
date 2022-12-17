@@ -24,15 +24,9 @@ export class HomeComponent implements OnInit {
       console.log(this.myData)
     });
   }
-  /*ngOnInit(): void {
-    this.myDataService.getPopularMovies(1)
-    .pipe(
-      //map(response => {const json = response.json()}),
-      tap(data => console.log('Data:', data))
-    );
-  }*/
-  viewMovie(id: number){
+
+  movieDetails(id: number){
     console.log(id);
-    this.router.navigate(['viewMovie', id]);
+    this.router.navigate(['movie', id]);
   }
 }

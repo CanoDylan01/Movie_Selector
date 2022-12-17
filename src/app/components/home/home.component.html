@@ -1,18 +1,17 @@
 <app-nav-bar></app-nav-bar>
 <header>Movie Selector</header>
 <div>
-  <br />
   <h2>Most Popular Movies:</h2>
   <div class="movieContainer">
     <div *ngFor="let movie of myData" class="movieCard">
-      <h3 (click)="viewMovie(movie.id)">{{movie.title}}</h3>
+      <h3 (click)="movieDetails(movie.id)">{{movie.title}}</h3>
       <div class="module line-clamp">
         <p> {{movie.overview}} </p>
       </div>
     </div>
   </div>
 </div>
-
+<hr/>
 <div class="bottom">
   <nav class="pagination-rounded" aria-label="Page navigation example">
     <ul class="pagination">

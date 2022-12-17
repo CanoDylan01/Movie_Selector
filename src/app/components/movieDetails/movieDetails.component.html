@@ -1,0 +1,14 @@
+<app-nav-bar></app-nav-bar>
+<section class="mt-3">
+  <div class="container">
+    <h1>{{myMovie?.title}}</h1>
+    <div class="leftPosition">
+      <img src={{myMovie?.poster_path}} alt="Poster from the Movie">
+    </div>
+    <div class="rightPosition">
+      <p>{{myMovie?.overview}}</p>
+      <p> Duración: {{myMovie?.runtime}} minutos </p>
+      <p> Puntuación: {{myMovie?.vote_average}} </p>
+    </div>
+  </div>
+</section>

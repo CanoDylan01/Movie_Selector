@@ -4,6 +4,7 @@ export interface MovieI{
   original_language: string;
   title: string;
   poster_path: string;
+  runtime: number
   overview: string;
   popularity: number;
   release_date: Date;
