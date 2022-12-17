@@ -1,0 +1,83 @@
+div.movieContainer {
+  display:contents
+}
+
+div.movieCard {
+  float:left;
+  width: 20em;
+  height: 10em;
+  margin-right: 10px;
+}
+
+.module {
+  width: 18em;
+  margin: 0 0 0.5em 0;
+  overflow: hidden;
+}
+
+.module p {
+  margin: 0;
+}
+
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+div.bottom {
+  clear: both;
+}
+
+.pagination {
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  border-radius: 0.25rem;
+}
+
+ol, ul, dl {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+ul {
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+
+li {
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
+
+.pagination li a:not(:disabled):not(.disabled) {
+  cursor: pointer;
+}
+
+.pagination-rounded li a {
+  border-radius: 50px!important;
+  margin: 0 0.3rem;
+}
+
+.pagination li a {
+  position: relative;
+  display: block;
+  padding: 0.5rem 0.75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: #007bff;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+}
+
+a {
+  text-decoration: none;
+}

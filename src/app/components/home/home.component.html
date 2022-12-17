@@ -1,7 +1,48 @@
 <app-nav-bar></app-nav-bar>
 <header>Movie Selector</header>
 <div>
-    <br/>
-  <h1>Fetching Data</h1>
-<app-movie></app-movie>
+  <br />
+  <h2>Most Popular Movies:</h2>
+  <div class="movieContainer">
+    <div *ngFor="let movie of myData" class="movieCard">
+      <h3>{{movie.title}}</h3>
+      <div class="module line-clamp">
+        <p> {{movie.overview}} </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bottom">
+  <nav class="pagination-rounded" aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item">
+        <a href="javascript:void(0);" class="page-link" aria-label="Previous">
+          <span aria-hidden="true">«</span>
+          <span class="sr-only">Previous</span>
+        </a>
+      </li>
+      <li class="page-item">
+        <a href="javascript:void(0);" class="page-link">1</a>
+      </li>
+      <li class="page-item active">
+        <a href="javascript:void(0);" class="page-link">2</a>
+      </li>
+      <li class="page-item">
+        <a href="javascript:void(0);" class="page-link">3</a>
+      </li>
+      <li class="page-item">
+        <a href="javascript:void(0);" class="page-link">4</a>
+      </li>
+      <li class="page-item">
+        <a href="javascript:void(0);" class="page-link">5</a>
+      </li>
+      <li class="page-item">
+        <a href="javascript:void(0);" class="page-link" aria-label="Next">
+          <span aria-hidden="true">»</span>
+          <span class="sr-only">Next</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
 </div>

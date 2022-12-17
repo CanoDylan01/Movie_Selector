@@ -3,6 +3,7 @@ export interface MovieI{
   id: number;
   original_language: string;
   title: string;
+  poster_path: string;
   overview: string;
   popularity: number;
   release_date: Date;

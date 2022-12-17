@@ -12,6 +12,7 @@ import { MyDataService } from 'src/app/services/my-data.service';
 export class HomeComponent implements OnInit {
   
   myData: MovieI[] | undefined;
+  urlImg : string = "https://image.tmdb.org/t/p/w250"
   
   constructor(private myDataService: MyDataService) {
 
