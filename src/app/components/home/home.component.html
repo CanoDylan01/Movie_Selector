@@ -5,7 +5,7 @@
   <h2>Most Popular Movies:</h2>
   <div class="movieContainer">
     <div *ngFor="let movie of myData" class="movieCard">
-      <h3>{{movie.title}}</h3>
+      <h3 (click)="viewMovie(movie.id)">{{movie.title}}</h3>
       <div class="module line-clamp">
         <p> {{movie.overview}} </p>
       </div>

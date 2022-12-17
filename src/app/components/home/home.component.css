@@ -3,10 +3,16 @@ div.movieContainer {
 }
 
 div.movieCard {
-  float:left;
+  float: left;
   width: 20em;
   height: 10em;
-  margin-right: 10px;
+  margin-right: 1em;
+  margin-left: 0.5em;
+
+}
+
+h3{
+  cursor: pointer;
 }
 
 .module {
