@@ -2,14 +2,21 @@
 <header>Movie Selector</header>
 <div>
   <h2>Most Popular Movies:</h2>
-  <div class="movieContainer">
-    <div *ngFor="let movie of myData" class="movieCard">
-      <h3 (click)="movieDetails(movie.id)">{{movie.title}}</h3>
-      <div class="module line-clamp">
-        <p> {{movie.overview}} </p>
+  <ng-container *ngIf="myData.length;else notFound;">
+    <div class="movieContainer">
+      <div *ngFor="let movie of myData" class="movieCard">
+        <h3 (click)="movieDetails(movie.id)">{{movie.title}}</h3>
+        <div class="module line-clamp">
+          <p> {{movie.overview}} </p>
+        </div>
       </div>
     </div>
-  </div>
+  </ng-container>
+  <ng-template #notFound>
+    <div>
+      Not Found!
+    </div>
+  </ng-template>
 </div>
 <hr/>
 <div class="bottom">

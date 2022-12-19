@@ -2,11 +2,11 @@
   <form>
     <div class="toolbar" role="banner">
       <h1>Movie Selector</h1>
-      <input type="search" id="movieSearch" name="movieSearch" placeholder="Search movies...">
-        <button class="button-30" type="submit">
-          Search
-        </button>
+      <form [formGroup] ="searchForm">
+        <input type="search" formControlName="search"/>
+        <button class="button-30" type="submit">Search</button>
+      </form>
     </div>
   </form>
-  <br/><br/>
+  <br /><br />
 </div>

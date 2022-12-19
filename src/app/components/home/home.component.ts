@@ -12,15 +12,16 @@ import { MyDataService } from 'src/app/services/my-data.service';
 })
 export class HomeComponent implements OnInit {
   
-  myData: MovieI[] | undefined;
-  urlImg : string = "https://image.tmdb.org/t/p/w250"
+  myData!: MovieI[];
+  urlImg: string = "https://image.tmdb.org/t/p/w250"
+  searchText: string = ''
   
   constructor(private myDataService: MyDataService, private router: Router) {
 
   }
   ngOnInit(): void { 
     this.myDataService.getPopularMovies(1).subscribe((data) => {
-      this.myData = data.results;
+      if(data.results != null) this.myData = data.results;
       console.log(this.myData)
     });
   }
@@ -28,5 +29,10 @@ export class HomeComponent implements OnInit {
   movieDetails(id: number){
     console.log(id);
     this.router.navigate(['movie', id]);
+  }
+
+  onSearchTextEntered(searchValue: string){
+    this.searchText = searchValue;
+    console.log(this.searchText)
   }
 }

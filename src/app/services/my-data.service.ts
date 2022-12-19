@@ -27,7 +27,7 @@ export class MyDataService {
     )
   }
 
-  getLatestMovies(){
+  getLatestMovie(){
     return this.http.get(
       this.url + 'movie/latest' + this.apiKey + this.lenguage
     )
@@ -42,6 +42,12 @@ export class MyDataService {
   getImageFromMovieId(movieId: string){
     return this.http.get(
       this.url + 'movie/' + movieId + '/images' + this.lenguage
+    )
+  }
+
+  searchMovie(movieTitle: string):Observable<apiResponseI>{
+    return this.http.get<apiResponseI>(
+      this.url + 'search/movie' + this.apiKey + '&query=' + movieTitle
     )
   }
 }
