@@ -10,32 +10,39 @@ import { MyDataService } from 'src/app/services/my-data.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  
+
   myData: MovieI[] = []
   urlImg: string = "https://image.tmdb.org/t/p/w250"
   searchText: string = ''
-  page: number = 1;
-  
+  page!: number
+
   constructor(private myDataService: MyDataService, private router: Router) {
 
   }
-  ngOnInit(): void { 
+  ngOnInit(): void {
+    this.page = 1
     this.getData(this.page);
   }
 
-  getData(page: number) {
-    this.myDataService.getPopularMovies(page).subscribe((data) => {
-      if(data.results != null) this.myData = data.results;
-      console.log(this.myData)
-    });
+  getData(page: number, inc?: number) {
+    if (page >= 1) {
+      this.myDataService.getPopularMovies(this.page).subscribe((data) => {
+        if (data.results != null) this.myData = data.results;
+        console.log(this.myData)
+      });
+
+      if (inc != null) this.page = this.page + inc
+    }
+    console.log(page)
   }
 
-  movieDetails(id: number){
+  movieDetails(id: number) {
     console.log(id);
     this.router.navigate(['movie', id]);
   }
-  
+
   receiveMovies($event: any) {
     this.myData = $event
   }
+
 }

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
 import { MovieI } from 'src/app/models/movie.interface';
 import { MyDataService } from 'src/app/services/my-data.service';
@@ -16,7 +17,7 @@ export class NavBarComponent implements OnInit {
 
   public movieList: MovieI[] = []
 
-  constructor(private myDataService: MyDataService) { this.searchTitle() }
+  constructor(private myDataService: MyDataService, private router: Router) { this.searchTitle() }
 
   ngOnInit(): void {
 
@@ -41,6 +42,10 @@ export class NavBarComponent implements OnInit {
 
   sendMovies() {
     this.movieEvent.emit(this.movieList)
+  }
+
+  goHome() {
+      this.router.navigate(['home']);
   }
 
 }

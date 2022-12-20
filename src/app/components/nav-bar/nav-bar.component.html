@@ -1,7 +1,7 @@
 <div>
   <form>
     <div class="toolbar" role="banner">
-      <h1>Movie Selector</h1>
+      <h1 (click)="goHome()">Movie Selector</h1>
       <form [formGroup] ="searchForm">
         <input type="search" formControlName="search"/>
         <button class="button-30" (click)="searchTitle()">Search</button>

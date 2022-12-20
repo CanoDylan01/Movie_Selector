@@ -5,7 +5,7 @@ import { MovieDetailsComponent } from "./components/movieDetails/movieDetails.co
 
 const routes: Routes = [
   { path:'' , redirectTo:'home', pathMatch:'full'},
-  { path:'home', component:HomeComponent },
+  { path:'home', component:HomeComponent, data: { defaultPage: 1} },
   { path:'movie/:id', component:MovieDetailsComponent }
 
 ];

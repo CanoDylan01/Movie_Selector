@@ -84,6 +84,11 @@ li {
   border: 1px solid #dee2e6;
 }
 
+.page-item a.active{
+  background-color: dodgerblue;
+  color: white;
+}
+
 a {
   text-decoration: none;
 }
