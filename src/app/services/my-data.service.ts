@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { filter, map, Observable } from 'rxjs';
 import { apiResponseI } from '../models/apiResponse.interface';
@@ -10,44 +10,50 @@ import { ResponseI } from '../models/response.interface';
 })
 export class MyDataService {
 
-  url:string = 'https://api.themoviedb.org/3/';
-  apiKey:string = '?api_key=554b1523bc221c8844d88617298a94b7';
+  url: string = 'https://api.themoviedb.org/3/';
+  apiKey: string = '?api_key=554b1523bc221c8844d88617298a94b7';
   lenguage: string = '&language=es-ES';
 
   constructor(private http: HttpClient) { }
 
-  getData(){
+  getData() {
     return this.http.get(
-      this.url );
+      this.url);
   }
 
-  getPopularMovies(page: number):Observable<apiResponseI>{
+  getPopularMovies(page: number): Observable<apiResponseI> {
     return this.http.get<apiResponseI>(
-      this.url + 'movie/popular'+ this.apiKey + this.lenguage + '&page=' + page
+      this.url + 'movie/popular' + this.apiKey + this.lenguage + '&page=' + page
     )
   }
 
-  getLatestMovie(){
+  getLatestMovie() {
     return this.http.get(
       this.url + 'movie/latest' + this.apiKey + this.lenguage
     )
   }
 
-  getMovieById(movieId: string):Observable<MovieI>{
+  getMovieById(movieId: string): Observable<MovieI> {
     return this.http.get<MovieI>(
       this.url + 'movie/' + movieId + this.apiKey + this.lenguage
     )
   }
 
-  getImageFromMovieId(movieId: string){
+  getImageFromMovieId(movieId: string) {
     return this.http.get(
       this.url + 'movie/' + movieId + '/images' + this.lenguage
     )
   }
 
-  searchMovie(movieTitle: string):Observable<apiResponseI>{
-    return this.http.get<apiResponseI>(
-      this.url + 'search/movie' + this.apiKey + '&query=' + movieTitle
-    )
+  searchMovie(movieTitle: string): Observable<apiResponseI> {
+    if (movieTitle != '') {
+      return this.http.get<apiResponseI>(
+        this.url + 'search/movie' + this.apiKey + '&query=' + movieTitle
+      )
+    } else {
+      return this.http.get<apiResponseI>(
+        this.url + 'movie/popular' + this.apiKey + this.lenguage + '&page=' + 1
+      )
+    }
   }
 }

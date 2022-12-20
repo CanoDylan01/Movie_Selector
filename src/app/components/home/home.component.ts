@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { getLocaleDateFormat } from '@angular/common';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { map, tap } from 'rxjs';
-import { apiResponseI } from 'src/app/models/apiResponse.interface';
 import { MovieI } from 'src/app/models/movie.interface';
 import { MyDataService } from 'src/app/services/my-data.service';
 
@@ -12,15 +11,20 @@ import { MyDataService } from 'src/app/services/my-data.service';
 })
 export class HomeComponent implements OnInit {
   
-  myData!: MovieI[];
+  myData: MovieI[] = []
   urlImg: string = "https://image.tmdb.org/t/p/w250"
   searchText: string = ''
+  page: number = 1;
   
   constructor(private myDataService: MyDataService, private router: Router) {
 
   }
   ngOnInit(): void { 
-    this.myDataService.getPopularMovies(1).subscribe((data) => {
+    this.getData(this.page);
+  }
+
+  getData(page: number) {
+    this.myDataService.getPopularMovies(page).subscribe((data) => {
       if(data.results != null) this.myData = data.results;
       console.log(this.myData)
     });
@@ -30,9 +34,8 @@ export class HomeComponent implements OnInit {
     console.log(id);
     this.router.navigate(['movie', id]);
   }
-
-  onSearchTextEntered(searchValue: string){
-    this.searchText = searchValue;
-    console.log(this.searchText)
+  
+  receiveMovies($event: any) {
+    this.myData = $event
   }
 }

@@ -4,7 +4,7 @@
       <h1>Movie Selector</h1>
       <form [formGroup] ="searchForm">
         <input type="search" formControlName="search"/>
-        <button class="button-30" type="submit">Search</button>
+        <button class="button-30" (click)="searchTitle()">Search</button>
       </form>
     </div>
   </form>

@@ -10,38 +10,38 @@ import { MyDataService } from 'src/app/services/my-data.service';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-  
-  enteredSearchValue : string = 'h'
+
+  @Output()
+  movieEvent: EventEmitter<MovieI[]> = new EventEmitter<MovieI[]>();
+
+  public movieList: MovieI[] = []
+
+  constructor(private myDataService: MyDataService) { this.searchTitle() }
+
+  ngOnInit(): void {
+
+  }
+
   searchForm: FormGroup = new FormGroup({
     search: new FormControl('')
   })
 
-  public movieList: Array<MovieI> = []
-
-  constructor(private myDataService: MyDataService) { 
+  searchTitle() {
     this.searchForm
-    .get('search')?.valueChanges.pipe(
-      debounceTime(1000),
-      distinctUntilChanged(),
-      switchMap((movieTitle) => this.myDataService.searchMovie(movieTitle)),
-    )
-    .subscribe((movieTitle) => {
-      this.movieList = movieTitle?.results
-    })
+      .get('search')?.valueChanges.pipe(
+        debounceTime(100),
+        distinctUntilChanged(),
+        switchMap((movieTitle) => this.myDataService.searchMovie(movieTitle)),
+      )
+      .subscribe((response) => {
+        this.movieList = response?.results
+      })
+      this.sendMovies();
   }
 
-  ngOnInit(): void {
-    if (this.enteredSearchValue != null)
-    this.myDataService.searchMovie(this.enteredSearchValue).subscribe(data => {
-      console.log(data.results)
-    })  
+  sendMovies() {
+    this.movieEvent.emit(this.movieList)
   }
 
-  @Output()
-  searchTextChanged: EventEmitter<string> = new EventEmitter<string>();
-
-  onSearchTextChanged(){
-    this.searchTextChanged.emit(this.enteredSearchValue);
-  }
 }
 
