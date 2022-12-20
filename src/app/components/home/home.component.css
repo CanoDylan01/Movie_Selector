@@ -1,34 +1,18 @@
-div.movieContainer {
-  display:contents
-}
-
-div.movieCard {
+.card {
+  width: 18rem;
+  height: 6em;
   float: left;
-  width: 19.8em;
-  height: 10em;
-  margin-right: 1em;
-  margin-left: 0.5em;
-
 }
 
-h3{
-  cursor: pointer;
+.col-md-8{
+  height: 100%;
+  overflow: auto;
 }
 
-.module {
-  width: 18em;
-  margin: 0 0 0.5em 0;
-  overflow: hidden;
-}
-
-.module p {
-  margin: 0;
-}
-
-.line-clamp {
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
+.col-md-2{
+  width: 20rem; 
+  height: 100%; 
+  overflow: auto;
 }
 
 div.bottom {

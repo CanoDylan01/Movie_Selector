@@ -1,28 +1,35 @@
 <app-nav-bar (movieEvent)="receiveMovies($event)"></app-nav-bar>
 <header>Movie Selector</header>
-<div>
-  <h2>Most Popular Movies:</h2>
-  <ng-container *ngIf="myData.length;else notFound;">
-    <div class="movieContainer">
-      <div *ngFor="let movie of myData" class="movieCard">
-        <h3 (click)="movieDetails(movie.id)">{{movie.title}}</h3>
-        <div class="module line-clamp">
-          <p> {{movie.overview}} </p>
+<div class="row d-flex">
+  
+  <div class="col-md-2">
+    
+  </div>
+  <div class="col-md-8">
+    <ng-container *ngIf="myData.length;else notFound;">
+      <div class="movieContainer">
+        <div *ngFor="let movie of myData" class="card m-4">
+          <h5 class="position-absolute top-50 start-50 translate-middle">{{movie.title}}</h5>
+          <div class="position-absolute bottom-0 end-0">
+            <a (click)="movieDetails(movie.id)" class="btn btn-primary btn-sm">View details</a>
+          </div>
         </div>
       </div>
-    </div>
-  </ng-container>
-  <ng-template #notFound>
-    <div>
-      Not Found!
-    </div>
-  </ng-template>
+    </ng-container>
+    <ng-template #notFound>
+      <div>
+        Not Found!
+      </div>
+    </ng-template>
+  </div>
+  <div class="col-md-2"></div>
+
 </div>
-<hr/>
+<hr />
 <div class="bottom">
   <nav class="pagination-rounded" aria-label="Page navigation example">
     <ul class="pagination">
-      <li class="page-item disabled">
+      <li class="page-items">
         <a (click)="getData(page-1, -1)" class="page-link" aria-label="Previous">
           <span aria-hidden="true">«</span>
           <span class="sr-only">Previous</span>
