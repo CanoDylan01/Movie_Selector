@@ -1,12 +1,12 @@
 .card {
-  width: 18rem;
+  width: 14rem;
   height: 6em;
   float: left;
 }
 
 .col-md-8{
   height: 100%;
-  overflow: auto;
+  text-align: center;
 }
 
 .col-md-2{

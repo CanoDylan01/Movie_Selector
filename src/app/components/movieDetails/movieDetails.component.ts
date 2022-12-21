@@ -9,7 +9,7 @@ import { MyDataService } from 'src/app/services/my-data.service';
   styleUrls: ['./movieDetails.component.css']
 })
 export class MovieDetailsComponent {
-  myMovie: MovieI | undefined
+  myMovie!: MovieI
   @Input() movie: MovieI | undefined;
 
   constructor(private myDataService: MyDataService, private router: Router, private activeRouter: ActivatedRoute) {

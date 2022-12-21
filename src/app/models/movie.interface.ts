@@ -1,3 +1,5 @@
+import { GenreI } from "./genre.interface";
+
 export interface MovieI{
   adult: boolean;
   id: number;
@@ -11,4 +13,6 @@ export interface MovieI{
   vote_average: number;
   vote_count: number;
   page: number;
+  genres: GenreI;
+  release_data: string;
 }

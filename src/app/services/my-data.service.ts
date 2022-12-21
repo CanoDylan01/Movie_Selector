@@ -12,7 +12,7 @@ export class MyDataService {
 
   url: string = 'https://api.themoviedb.org/3/';
   apiKey: string = '?api_key=554b1523bc221c8844d88617298a94b7';
-  lenguage: string = '&language=es-ES';
+  lenguage: string = '&language=en-US';
 
   constructor(private http: HttpClient) { }
 
